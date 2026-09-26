@@ -45,7 +45,6 @@ jobs:
           python-version: "3.12"
 
       - name: Install Backend Dependencies
-        working-directory: backend
         run: pip install -r requirements.txt
 
       - name: Check Backend Syntax
