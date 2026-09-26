@@ -28,7 +28,7 @@ Flask Backend
 │              AWS Services                 │
 │                                           │
 │  EC2 │ S3 │ CloudWatch │ SNS │ Cost       │
-│                              Explorer │ IAM│
+│                         Explorer │ IAM    │
 └───────────────────────────────────────────┘
 ```
 
@@ -78,17 +78,17 @@ The dashboard combines:
           ┌────────────────┼────────────────┐
           │                │                │
           ▼                ▼                ▼
-       ┌──────┐         ┌──────┐      ┌───────────┐
-       │ ☁️ EC2│         │ 🪣 S3 │      │ 📊 CloudWatch│
-       └──────┘         └──────┘      └─────┬─────┘
-                                             │
-                                             ▼
-                                          ┌─────┐
-                                          │ 📢 SNS │
-                                          └──┬──┘
-                                             │
-                                             ▼
-                                       📧 Email Alert
+      ┌──────┐         ┌──────┐       ┌────────────┐
+      │ ☁️ EC2│         │ 🪣 S3 │       │ 📊 CloudWatch│
+      └──────┘         └──────┘       └──────┬─────┘
+                                              │
+                                              ▼
+                                         ┌─────────┐
+                                         │ 📢 SNS  │
+                                         └────┬────┘
+                                              │
+                                              ▼
+                                        📧 Email Alert
 
                            ┌──────────────────┐
                            │ 💰 Cost Explorer │
@@ -331,20 +331,20 @@ GET /api/activity-logs
 
 ## 🛠️ Technology Stack
 
-| Layer             | Technology     |
-| ----------------- | -------------- |
-| ⚛️ Frontend       | React.js       |
-| 📜 Language       | JavaScript     |
-| ⚡ Build Tool      | Vite           |
-| 📊 Charts         | Recharts       |
-| 🎨 Icons          | Lucide React   |
-| 🐍 Backend        | Python         |
-| 🌐 API Framework  | Flask          |
-| 🔗 CORS           | Flask-CORS     |
-| ☁️ AWS SDK        | Boto3          |
-| ☁️ Cloud          | AWS            |
-| 📦 Source Control | Git / GitHub   |
-| 🔄 CI/CD          | GitHub Actions |
+| Layer                  | Technology     |
+| ---------------------- | -------------- |
+| ⚛️ Frontend            | React.js       |
+| 📜 Language            | JavaScript     |
+| ⚡ Build Tool           | Vite           |
+| 📊 Charts              | Recharts       |
+| 🎨 Icons               | Lucide React   |
+| 🐍 Backend             | Python         |
+| 🌐 API Framework       | Flask          |
+| 🔗 CORS                | Flask-CORS     |
+| ☁️ AWS SDK             | Boto3          |
+| ☁️ Cloud               | AWS            |
+| 📦 Source Control      | Git / GitHub   |
+| 🔄 Automated CI Checks | GitHub Actions |
 
 ---
 
@@ -379,6 +379,10 @@ cloud-resource-dashboard/
 │   ├── 08-aws-cost.png
 │   ├── 09-aws-console-configuration.png
 │   └── 10-github-actions.png
+│
+├── 📂 .github/
+│   └── workflows/
+│       └── ci.yml
 │
 ├── 📄 .gitignore
 └── 📄 README.md
@@ -541,7 +545,7 @@ The frontend displays appropriate error states instead of allowing the complete 
 
 The dashboard refreshes relevant monitoring and operational information approximately every **30 seconds**.
 
-This provides near-real-time visibility without requiring users to manually reload the page.
+This provides frequently updated visibility without requiring users to manually reload the page.
 
 ---
 
@@ -592,11 +596,24 @@ This provides near-real-time visibility without requiring users to manually relo
 * Health endpoint
 * AWS resource API responses
 
+### ⚙️ GitHub Actions
+
+The GitHub Actions workflow automatically validates the project after changes are pushed to the `main` branch or submitted through a pull request.
+
+The workflow performs:
+
+* Frontend dependency installation
+* Frontend production build
+* Backend dependency installation
+* Backend Python syntax validation
+
+No automatic deployment is configured.
+
 ---
 
 ## 📸 Screenshots & Evidence
 
-The repository should contain screenshots demonstrating the working project.
+The repository contains screenshots demonstrating the working project.
 
 | Screenshot                            | Purpose                              |
 | ------------------------------------- | ------------------------------------ |
@@ -609,7 +626,7 @@ The repository should contain screenshots demonstrating the working project.
 | 📧 `07-sns-email-alert.png`           | SNS email notification               |
 | 💰 `08-aws-cost.png`                  | AWS Cost Explorer information        |
 | ☁️ `09-aws-console-configuration.png` | AWS configuration                    |
-| 🔄 `10-github-actions.png`            | CI/CD workflow                       |
+| 🔄 `10-github-actions.png`            | GitHub Actions automated checks      |
 
 ---
 
@@ -637,9 +654,13 @@ The diagram should show:
 
 ---
 
-## 🔄 CI/CD
+## 🔄 GitHub Actions
 
-GitHub Actions is used as the project's CI/CD automation layer.
+GitHub Actions is used to automatically validate the project whenever changes are pushed to the `main` branch or a pull request is opened.
+
+The workflow performs automated project checks only. It does **not** automatically deploy the application to EC2 or any other AWS service.
+
+### Workflow
 
 ```text
 👨‍💻 Developer
@@ -648,13 +669,57 @@ GitHub Actions is used as the project's CI/CD automation layer.
       ↓
 ⚙️ GitHub Actions
       │
-      ├── 📦 Install Dependencies
-      ├── 🧪 Run Tests
-      ├── ✅ Validate Backend
-      └── 🏗️ Build Frontend
-      ↓
-🚀 Deployment / Release
+      ├── 📦 Install Frontend Dependencies
+      ├── 🏗️ Build Frontend
+      ├── 📦 Install Backend Dependencies
+      └── ✅ Validate Backend
 ```
+
+### Current CI Workflow
+
+The workflow is defined in:
+
+```text
+.github/workflows/ci.yml
+```
+
+The frontend workflow:
+
+```text
+npm ci
+    ↓
+npm run build
+```
+
+The backend workflow:
+
+```text
+pip install -r requirements.txt
+    ↓
+python -m compileall .
+```
+
+### Git Workflow
+
+The project uses manual Git operations for source-code updates:
+
+```text
+👨‍💻 Developer
+      ↓
+💻 VS Code
+      ↓
+Git
+      ↓
+🔐 SSH Authentication
+      ↓
+🐙 GitHub
+      ↓
+⚙️ GitHub Actions
+      ↓
+✅ Automated Checks
+```
+
+There is **no automatic deployment or release pipeline** configured.
 
 ---
 
@@ -706,6 +771,10 @@ Explain IAM permissions, credentials, CORS and least-privilege access.
 
 Explain how AWS failures are converted into backend error responses and displayed as frontend error states.
 
+### 1️⃣1️⃣ GitHub Actions
+
+Explain that GitHub Actions automatically validates the frontend build and backend syntax after repository changes.
+
 ---
 
 ## 🚀 Production Improvements
@@ -742,7 +811,7 @@ This project demonstrates practical experience with:
 * ⚠️ Error handling
 * 📝 Operational visibility
 * 🐙 GitHub source control
-* 🔄 GitHub Actions CI/CD
+* ⚙️ GitHub Actions automated CI checks
 * 🏗️ Cloud architecture design
 
 ---
@@ -806,7 +875,7 @@ ap-south-1 — Asia Pacific (Mumbai)
 🔧 Boto3
 ☁️ AWS
 🐙 GitHub
-🔄 GitHub Actions
+⚙️ GitHub Actions
 ```
 
 ---
@@ -814,4 +883,3 @@ ap-south-1 — Asia Pacific (Mumbai)
 ## 📄 License
 
 This project is developed for **educational and project demonstration purposes**.
-

@@ -2,21 +2,25 @@
 
 A Python Flask REST API that provides AWS resource management, monitoring, alerting, cost information, and activity tracking for the Cloud Resource Management & Monitoring Dashboard.
 
+---
+
 ## 📌 Project Overview
 
 The backend acts as the application layer between the React frontend and AWS services.
 
 ```text
 ⚛️ React Frontend
-      ↓
+        ↓
 🌐 Flask REST API
-      ↓
+        ↓
 🔧 Boto3
-      ↓
+        ↓
 ☁️ AWS Services
 ```
 
-The Flask backend validates and coordinates requests from the frontend and uses **Boto3** to communicate with AWS services.
+The Flask backend handles requests from the frontend and uses **Boto3** to communicate with AWS services.
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -24,12 +28,14 @@ The Flask backend validates and coordinates requests from the frontend and uses 
 * 🌐 Flask
 * 🔗 Flask-CORS
 * 🔧 Boto3
-* 🖥️ AWS EC2
-* 🪣 AWS S3
-* 📊 AWS CloudWatch
-* 📢 AWS SNS
+* 🖥️ Amazon EC2
+* 🪣 Amazon S3
+* 📊 Amazon CloudWatch
+* 📢 Amazon SNS
 * 💰 AWS Cost Explorer
 * 🔐 AWS IAM
+
+---
 
 ## ☁️ AWS Services
 
@@ -37,10 +43,12 @@ The Flask backend validates and coordinates requests from the frontend and uses 
 | ------------------------ | ------------------------------------------ |
 | 🖥️ **Amazon EC2**       | Compute resource management and monitoring |
 | 🪣 **Amazon S3**         | Bucket and object management               |
-| 📊 **Amazon CloudWatch** | CPU metrics and alarms                     |
+| 📊 **Amazon CloudWatch** | CPU metrics and alarm monitoring           |
 | 📢 **Amazon SNS**        | Email notifications                        |
 | 💰 **AWS Cost Explorer** | Cost information                           |
 | 🔐 **AWS IAM**           | AWS permissions and authorization          |
+
+---
 
 ## 🚀 Features
 
@@ -49,11 +57,13 @@ The Flask backend validates and coordinates requests from the frontend and uses 
 The backend provides APIs to:
 
 * 🔍 Retrieve EC2 instances
-* 🔎 Search/inspect instances
+* 🔎 Inspect instance information
 * ▶️ Start instances
 * ⏹️ Stop instances
 * 📋 Retrieve instance details
 * 🌐 Retrieve instance type and availability zone information
+
+---
 
 ### 🪣 S3 Management
 
@@ -67,11 +77,15 @@ The backend provides APIs to:
 * 📤 Upload files
 * 🗑️ Delete objects
 
+---
+
 ### 📊 CloudWatch Monitoring
 
-The backend retrieves EC2 CPU utilization from CloudWatch and provides the monitoring data to the React frontend.
+The backend retrieves EC2 CPU utilization data from Amazon CloudWatch and provides the monitoring information to the React frontend.
 
-It also provides CloudWatch alarm information.
+It also provides CloudWatch alarm information for the dashboard.
+
+---
 
 ### 🚨 SNS Notifications
 
@@ -81,21 +95,27 @@ CloudWatch alarms can trigger an SNS notification when the configured CPU thresh
 
 ```text
 🖥️ EC2 CPU Load
-     ↓
+        ↓
 📈 CPU Utilization ≥ 80%
-     ↓
+        ↓
 🚨 CloudWatch Alarm
-     ↓
+        ↓
 🔴 IN ALARM
-     ↓
+        ↓
 📢 SNS Topic
-     ↓
+        ↓
 📧 Email Notification
-     ↓
+        ↓
 🖥️ Dashboard Alert Status
 ```
 
-The project documentation describes the tested alarm configuration as an **80% CPU threshold**, **5-minute period**, and **one evaluation period**.
+The documented alarm configuration uses:
+
+* **CPU threshold:** 80%
+* **Period:** 5 minutes
+* **Evaluation periods:** 1
+
+---
 
 ### 💰 AWS Cost Explorer
 
@@ -103,17 +123,21 @@ The backend provides billing-period cost information through the AWS Cost Explor
 
 #### 🔌 Endpoint
 
-```text
+```http
 GET /api/cost
 ```
+
+---
 
 ### 📝 Activity Logging
 
 The backend provides activity information to the dashboard through:
 
-```text
+```http
 GET /api/activity-logs
 ```
+
+---
 
 ## 🔌 REST API
 
@@ -123,6 +147,8 @@ GET /api/activity-logs
 GET /api/health
 ```
 
+---
+
 ### 🖥️ EC2
 
 ```http
@@ -131,6 +157,8 @@ POST /api/ec2/<instance_id>/start
 POST /api/ec2/<instance_id>/stop
 GET  /api/ec2/<instance_id>/details
 ```
+
+---
 
 ### 🪣 S3
 
@@ -144,6 +172,8 @@ DELETE /api/s3/buckets/<bucket_name>/objects/<object_key>
 DELETE /api/s3/buckets/<bucket_name>
 ```
 
+---
+
 ### 📊 CloudWatch & 🚨 Alerts
 
 ```http
@@ -151,17 +181,23 @@ GET /api/cloudwatch/ec2/<instance_id>/cpu
 GET /api/alerts
 ```
 
+---
+
 ### 💰 Cost
 
 ```http
 GET /api/cost
 ```
 
+---
+
 ### 📝 Activity
 
 ```http
 GET /api/activity-logs
 ```
+
+---
 
 ## 📁 Project Structure
 
@@ -172,6 +208,8 @@ backend/
 ├── 📦 requirements.txt
 └── 📄 README.md
 ```
+
+---
 
 ## ⚙️ Installation
 
@@ -187,7 +225,7 @@ Create a Python virtual environment:
 python -m venv venv
 ```
 
-Activate the virtual environment on Windows:
+Activate the virtual environment on Windows PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
@@ -199,7 +237,11 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+---
+
 ## ▶️ Run Backend
+
+Start the Flask application:
 
 ```bash
 python app.py
@@ -210,6 +252,8 @@ Backend URL:
 ```text
 http://127.0.0.1:5000
 ```
+
+---
 
 ## ❤️ Health Check
 
@@ -228,6 +272,8 @@ Expected response:
 }
 ```
 
+---
+
 ## ☁️ AWS Configuration
 
 ### 🌍 AWS Region
@@ -236,7 +282,7 @@ Expected response:
 ap-south-1
 ```
 
-### 📍 Region
+### 📍 Region Name
 
 ```text
 Asia Pacific (Mumbai)
@@ -252,6 +298,8 @@ Asia Pacific (Mumbai)
 💰 Cost Explorer
 🔐 IAM
 ```
+
+---
 
 ## 🔐 AWS Credentials & Security
 
@@ -274,11 +322,13 @@ Production should preferably use:
 
 Sensitive configuration should remain outside source control.
 
-🌐 CORS should also be restricted to trusted frontend origins in production.
+CORS should also be restricted to trusted frontend origins in a production environment.
+
+---
 
 ## ⚠️ Error Handling
 
-The backend returns error responses when AWS operations fail.
+The backend returns appropriate error responses when AWS operations fail.
 
 Examples include:
 
@@ -287,47 +337,70 @@ Examples include:
 * 📊 CloudWatch retrieval failures
 * 💰 Cost Explorer failures
 
-The frontend can then display appropriate error states to users.
+The React frontend can then display appropriate loading, success, or error states to users.
+
+---
 
 ## 🔗 Frontend Integration
 
-The React frontend communicates with this backend using REST APIs.
+The React frontend communicates with the Flask backend using REST APIs.
 
 ```text
 ⚛️ React
-  ↓
+    ↓
 📡 HTTP Request
-  ↓
+    ↓
 🌐 Flask API
-  ↓
+    ↓
 🔧 Boto3
-  ↓
+    ↓
 ☁️ AWS
-  ↓
+    ↓
 📦 Flask JSON Response
-  ↓
+    ↓
 📊 React Dashboard
 ```
 
+This separation keeps the frontend responsible for the user interface while the backend handles API logic and AWS communication.
+
+---
+
 ## 🛠️ Development
 
-The backend is designed as the application/API layer of the Cloud Resource Management & Monitoring Dashboard.
+The backend is designed as the application and API layer of the Cloud Resource Management & Monitoring Dashboard.
 
-### 🚀 Future Production Improvements
+Its main responsibilities are:
 
-Future production improvements can include:
+* Receiving frontend API requests
+* Communicating with AWS through Boto3
+* Processing AWS responses
+* Returning JSON responses
+* Handling AWS-related errors
+* Providing monitoring and cost information
+* Supporting EC2 and S3 operations
+
+---
+
+## 🚀 Future Production Improvements
+
+Possible future production improvements include:
 
 * 🔐 Authentication
 * 👥 Role-based access control
 * 📝 Centralized logging
 * 🔄 Retry mechanisms
-* ❤️ Health checks
+* ❤️ Advanced health checks
 * 🔒 HTTPS
 * 🔑 AWS Secrets Manager
 * 📊 CloudWatch Logs
-* 🔎 CloudTrail integration
+* 🔎 AWS CloudTrail integration
 * 🏗️ Infrastructure as Code
 * 📦 Containerized deployment
+* ⚡ Improved scalability and observability
+
+These are **future production improvements** and are not required for the current local development setup.
+
+---
 
 ## 👨‍💻 Project
 
@@ -336,11 +409,21 @@ Future production improvements can include:
 ### 🛠️ Technologies
 
 ```text
-🐍 Python • 🌐 Flask • 🔗 Flask-CORS • 🔧 Boto3 • ☁️ AWS
+🐍 Python
+🌐 Flask
+🔗 Flask-CORS
+🔧 Boto3
+☁️ AWS
 ```
 
 ### 🌍 AWS Region
 
-
+```text
 ap-south-1 — Asia Pacific (Mumbai)
+```
 
+---
+
+## 📄 Purpose
+
+This backend is developed as part of an educational cloud management and monitoring project demonstrating integration between a modern web application and AWS services.

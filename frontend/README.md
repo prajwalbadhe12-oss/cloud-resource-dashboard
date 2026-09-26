@@ -1,26 +1,34 @@
 # ⚛️ Cloud Resource Management & Monitoring Dashboard — Frontend
 
-A modern React-based frontend for the **Cloud Resource Management & Monitoring Dashboard**. The application provides a centralized interface for managing AWS resources, monitoring infrastructure, viewing alerts, checking AWS costs, and tracking operational activity.
+A modern React-based frontend for the **Cloud Resource Management & Monitoring Dashboard**.
+
+The application provides a centralized interface for managing AWS resources, monitoring infrastructure, viewing alerts, checking AWS costs, and tracking operational activity.
+
+---
 
 ## 📌 Project Overview
 
 The frontend is built using **React.js** and provides the user interface for interacting with the Flask REST API.
 
-The frontend communicates with the backend through REST APIs, while the backend handles communication with AWS services.
+The frontend communicates with the backend through REST APIs, while the backend handles AWS service communication using Boto3.
 
 ### 🏗️ Architecture
 
 ```text
 👤 User / Browser
-      ↓
+        ↓
 ⚛️ React Frontend
-      ↓
+        ↓
 🔌 REST API / JSON
-      ↓
+        ↓
 🐍 Flask Backend
-      ↓
+        ↓
+🔧 Boto3
+        ↓
 ☁️ AWS Services
 ```
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -32,9 +40,15 @@ The frontend communicates with the backend through REST APIs, while the backend 
 * 🎨 CSS
 * 🔌 REST API / JSON
 
+---
+
 ## 🚀 Features
 
 ### 📊 Dashboard
+
+The dashboard provides an overview of important AWS resources and operational information.
+
+Features include:
 
 * 🖥️ View EC2 resource statistics
 * 🟢 View running and stopped instance counts
@@ -43,47 +57,77 @@ The frontend communicates with the backend through REST APIs, while the backend 
 * 🚨 View alert status
 * 📝 View recent activity
 
+---
+
 ### 🖥️ EC2 Management
 
-* 📋 View EC2 instances
-* 🔍 Search instances
-* 📄 View instance details
-* ▶️ Start EC2 instances
-* ⏹️ Stop EC2 instances
+The frontend provides an interface for:
+
+* 📋 Viewing EC2 instances
+* 🔍 Searching instances
+* 📄 Viewing instance details
+* ▶️ Starting EC2 instances
+* ⏹️ Stopping EC2 instances
+
+---
 
 ### 🪣 S3 Management
 
-* 📋 View S3 buckets
-* 🔍 Search buckets
-* ➕ Create buckets
-* 🗑️ Delete buckets
-* 📄 View bucket details
-* 📦 View objects
-* 📤 Upload files
-* 🗑️ Delete objects
+The frontend provides an interface for:
+
+* 📋 Viewing S3 buckets
+* 🔍 Searching buckets
+* ➕ Creating buckets
+* 🗑️ Deleting buckets
+* 📄 Viewing bucket details
+* 📦 Viewing objects
+* 📤 Uploading files
+* 🗑️ Deleting objects
+
+---
 
 ### 📈 CloudWatch Monitoring
 
-* 📊 Display EC2 CPU utilization
-* 📈 View CPU history using charts
-* 🔄 Automatically refresh monitoring information
-* 🚨 Display CloudWatch alarm status
+The monitoring interface provides:
+
+* 📊 EC2 CPU utilization
+* 📈 CPU history using charts
+* 🔄 Automatic monitoring refresh
+* 🚨 CloudWatch alarm status
+
+Charts are implemented using **Recharts**.
+
+---
 
 ### 🚨 Alerts
 
-* 📊 Display CloudWatch alarm information
-* 📢 Display SNS notification status
-* 🔥 Show high-CPU alert information
+The dashboard provides visibility into:
+
+* 📊 CloudWatch alarm information
+* 📢 SNS notification status
+* 🔥 High-CPU alert information
+
+The frontend displays alert information returned by the Flask backend.
+
+---
 
 ### 💰 AWS Cost
 
-* 💵 Display current billing-period cost
-* 📊 Show AWS Cost Explorer information
+The cost section provides:
+
+* 💵 Current billing-period cost
+* 📊 AWS Cost Explorer information
+
+---
 
 ### 📝 Activity
 
-* 📋 Display important dashboard operations
-* 👁️ Provide operational visibility
+The activity section provides:
+
+* 📋 Important dashboard operations
+* 👁️ Operational visibility
+
+---
 
 ## 🔌 Backend API
 
@@ -95,6 +139,8 @@ The frontend communicates with the Flask backend through REST API endpoints.
 GET /api/health
 ```
 
+---
+
 ### 🖥️ EC2
 
 ```http
@@ -104,6 +150,8 @@ POST /api/ec2/<instance_id>/stop
 GET  /api/ec2/<instance_id>/details
 ```
 
+---
+
 ### 🪣 S3
 
 ```http
@@ -112,9 +160,11 @@ GET    /api/s3/buckets/<bucket_name>/objects
 GET    /api/s3/buckets/<bucket_name>/details
 POST   /api/s3/buckets
 POST   /api/s3/buckets/<bucket_name>/upload
-DELETE /api/s3/buckets/<bucket_name>
 DELETE /api/s3/buckets/<bucket_name>/objects/<object_key>
+DELETE /api/s3/buckets/<bucket_name>
 ```
+
+---
 
 ### 📊 CloudWatch & 🚨 Alerts
 
@@ -123,12 +173,16 @@ GET /api/cloudwatch/ec2/<instance_id>/cpu
 GET /api/alerts
 ```
 
+---
+
 ### 💰 Cost & 📝 Activity
 
 ```http
 GET /api/cost
 GET /api/activity-logs
 ```
+
+---
 
 ## 📁 Project Structure
 
@@ -141,6 +195,8 @@ frontend/
 ├── ⚙️ vite.config.js
 └── 📄 README.md
 ```
+
+---
 
 ## ⚙️ Installation
 
@@ -156,7 +212,11 @@ Install dependencies:
 npm install
 ```
 
+---
+
 ## ▶️ Run Development Server
+
+Start the Vite development server:
 
 ```bash
 npm run dev
@@ -168,19 +228,25 @@ The frontend will normally be available at:
 http://localhost:5173
 ```
 
+---
+
 ## 📦 Production Build
 
-To create a production build:
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-To preview the production build:
+The generated production files are placed in the `dist/` directory.
+
+To preview the production build locally:
 
 ```bash
 npm run preview
 ```
+
+---
 
 ## 🐍 Backend Requirement
 
@@ -202,30 +268,42 @@ http://localhost:5173
 
 ```text
 ⚛️ React Frontend
-       ↓
+        ↓
 🔌 REST API Request
-       ↓
+        ↓
 🐍 Flask Backend
-       ↓
+        ↓
 🔧 Boto3
-       ↓
+        ↓
 ☁️ AWS Services
-       ↓
+        ↓
 📦 JSON Response
-       ↓
+        ↓
 📊 React Dashboard
 ```
 
+The frontend does not directly communicate with AWS services. AWS operations are handled by the Flask backend.
+
+---
+
 ## 🔄 Monitoring Refresh
 
-The dashboard refreshes relevant monitoring and operational information approximately every **30 seconds**, providing near-real-time visibility without requiring manual page reloads.
+The dashboard refreshes relevant monitoring and operational information approximately every **30 seconds**.
+
+This provides frequently updated visibility without requiring users to manually reload the page.
+
+---
 
 ## ☁️ AWS Region
 
+The application is configured for the AWS Mumbai region:
+
 ```text
-🌍 ap-south-1
-📍 Asia Pacific (Mumbai)
+🌍 Region: ap-south-1
+📍 Name: Asia Pacific (Mumbai)
 ```
+
+---
 
 ## 🔗 Related Project
 
@@ -238,12 +316,68 @@ The dashboard refreshes relevant monitoring and operational information approxim
 The backend is responsible for:
 
 * 🔌 REST APIs
-* 🔐 AWS authentication/authorization
+* 🔐 AWS authentication and authorization
 * 🔧 Boto3 integration
 * ☁️ AWS resource operations
 * 📊 Monitoring
 * 🚨 Alerts
 * 💰 Cost information
+* ⚠️ AWS error handling
+
+---
+
+## ⚙️ GitHub Actions
+
+The project uses GitHub Actions for automated validation of the frontend and backend.
+
+For the frontend, the CI workflow:
+
+```text
+📦 Install Dependencies
+        ↓
+🏗️ Build Frontend
+        ↓
+✅ Build Validation
+```
+
+The frontend CI uses:
+
+```bash
+npm ci
+npm run build
+```
+
+GitHub Actions is used for **automated CI checks only**.
+
+No automatic deployment of the frontend is configured through GitHub Actions.
+
+---
+
+## 🧪 Frontend Validation
+
+The frontend can be validated locally using:
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Production build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+A successful production build confirms that the frontend can be compiled successfully.
+
+---
 
 ## 👨‍💻 Project
 
@@ -252,5 +386,23 @@ The backend is responsible for:
 ### 🛠️ Technologies
 
 ```text
-⚛️ React • 📜 JavaScript • ⚡ Vite • 📊 Recharts • 🎨 Lucide React
+⚛️ React
+📜 JavaScript
+⚡ Vite
+📊 Recharts
+🎨 Lucide React
+🎨 CSS
+🔌 REST API
 ```
+
+### 🌍 AWS Region
+
+```text
+ap-south-1 — Asia Pacific (Mumbai)
+```
+
+---
+
+## 📄 Purpose
+
+This frontend is developed as part of an educational cloud management and monitoring project demonstrating how a modern React application can provide a centralized interface for AWS resource management and monitoring.
