@@ -1,0 +1,178 @@
+[
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T05:00:57.111868+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T05:03:40.431780+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    },
+    {
+        "operation": "S3",
+        "resource": "my-photo-app-storage-12",
+        "action": "UPLOAD",
+        "timestamp": "2026-09-25T05:05:37.241474+00:00",
+        "status": "success",
+        "message": "File upload.txt uploaded successfully to bucket my-photo-app-storage-12"
+    },
+    {
+        "operation": "S3",
+        "resource": "my-photo-app-storage-12",
+        "action": "DELETE_OBJECT",
+        "timestamp": "2026-09-25T05:11:46.523733+00:00",
+        "status": "success",
+        "message": "Object upload.txt deleted successfully from bucket my-photo-app-storage-12"
+    },
+    {
+        "operation": "S3",
+        "resource": "cloud-resource-dashboard-log-test-2026-prajwal",
+        "action": "CREATE_BUCKET",
+        "timestamp": "2026-09-25T05:15:20.659569+00:00",
+        "status": "success",
+        "message": "S3 bucket cloud-resource-dashboard-log-test-2026-prajwal created successfully"
+    },
+    {
+        "operation": "S3",
+        "resource": "cloud-resource-dashboard-log-test-2026-prajwal",
+        "action": "DELETE_BUCKET",
+        "timestamp": "2026-09-25T05:16:49.908151+00:00",
+        "status": "success",
+        "message": "S3 bucket cloud-resource-dashboard-log-test-2026-prajwal deleted successfully"
+    },
+    {
+        "operation": "S3",
+        "resource": "ai-face-analysis-images-2026",
+        "action": "UPLOAD",
+        "timestamp": "2026-09-25T09:39:23.239162+00:00",
+        "status": "success",
+        "message": "File upload.txt uploaded successfully to bucket ai-face-analysis-images-2026"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T10:14:06.956794+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T10:28:30.477360+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T12:43:52.636582+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T12:50:24.502805+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    },
+    {
+        "operation": "S3",
+        "resource": "ai-face-analysis-images-2026",
+        "action": "UPLOAD",
+        "timestamp": "2026-09-25T17:14:00.459054+00:00",
+        "status": "success",
+        "message": "File sahil_pic.jpeg uploaded successfully to bucket ai-face-analysis-images-2026"
+    },
+    {
+        "operation": "S3",
+        "resource": "ai-face-analysis-images-2026",
+        "action": "DELETE_OBJECT",
+        "timestamp": "2026-09-25T17:14:50.487310+00:00",
+        "status": "success",
+        "message": "Object sahil_pic.jpeg deleted successfully from bucket ai-face-analysis-images-2026"
+    },
+    {
+        "operation": "S3",
+        "resource": "cloud-resource-dashboard-test-2026-prajwal",
+        "action": "CREATE_BUCKET",
+        "timestamp": "2026-09-25T17:15:25.030499+00:00",
+        "status": "success",
+        "message": "S3 bucket cloud-resource-dashboard-test-2026-prajwal created successfully"
+    },
+    {
+        "operation": "S3",
+        "resource": "cloud-resource-dashboard-test-2026-prajwal",
+        "action": "CREATE_BUCKET",
+        "timestamp": "2026-09-25T17:15:25.820374+00:00",
+        "status": "failure",
+        "message": "An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it."
+    },
+    {
+        "operation": "S3",
+        "resource": "cloud-resource-dashboard-test-2026-prajwal",
+        "action": "DELETE_BUCKET",
+        "timestamp": "2026-09-25T17:30:15.358958+00:00",
+        "status": "success",
+        "message": "S3 bucket cloud-resource-dashboard-test-2026-prajwal deleted successfully"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T17:50:41.988495+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T17:57:40.772825+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T17:59:17.146180+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T18:08:08.011002+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "START",
+        "timestamp": "2026-09-25T18:33:05.563526+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 start request submitted"
+    },
+    {
+        "operation": "EC2",
+        "resource": "i-0b9e385d733f75658",
+        "action": "STOP",
+        "timestamp": "2026-09-25T18:33:33.190227+00:00",
+        "status": "success",
+        "message": "EC2 instance i-0b9e385d733f75658 stop request submitted"
+    }
+]
